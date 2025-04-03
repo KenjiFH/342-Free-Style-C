@@ -1,5 +1,5 @@
 #include <iostream>
-
+#include <numeric>
 
 using namespace std;
 
@@ -73,13 +73,30 @@ class Fraction{
 
 
 };
+int find_gcd(int a, int b){ //find gcd c++ on google
+    while (b != 0) {
+      int temp = b;
+      b = a % b;
+      a = temp;
+    }
+    return a;
+  }
 
-
-//reduces a fraction to min terms
+//reduces a fraction to min terms take gcd and divide both terms 
 Fraction reduce_fraction(Fraction input){
-   
 
-    return input;
+
+   
+   
+    int gcd = find_gcd(input.num,input.denom);
+
+    int new_num = input.num/gcd;
+    int new_denom = input.denom/gcd;
+    
+    Fraction output = Fraction(new_num,new_denom);
+
+
+    return output;
 
 
 
@@ -185,7 +202,7 @@ int main(){
     
     //run_prime_Tests();
     //run_pow_2_Tests();
-
+    test_reduce_frac();
     
     
 
