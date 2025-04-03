@@ -131,10 +131,10 @@ void run_pow_2_Tests() {
 
 int main(){
 
-
+    
     //run_prime_Tests();
     run_pow_2_Tests();
-    cout << '23456';
+    
 
     return 0;
 }
