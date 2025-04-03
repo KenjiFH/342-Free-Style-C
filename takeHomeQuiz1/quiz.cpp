@@ -52,12 +52,34 @@ bool is_prime(int num){
     
 }
 
+class Fraction{
+    public :
+    int num;
+    int denom;
+
+    Fraction(int n, int d){
+      num = n;
+      denom = d;
+    }
+    
+    string to_string(){
+        return std::to_string(num) + "/" + std::to_string(denom);;
+    }
+    
+    //operator overload
+    bool operator ==(Fraction &other){
+       return this-> num == other.num && this-> denom == other.denom;
+    }
 
 
-void reduce_fraction(int nrtr, int denom){
+};
+
+
+//reduces a fraction to min terms
+Fraction reduce_fraction(Fraction input){
    
 
-
+    return input;
 
 
 
@@ -67,7 +89,36 @@ void reduce_fraction(int nrtr, int denom){
 
 //TEST CASES
 
+void test_reduce_frac(){
 
+ Fraction inputs[4] = {Fraction(1,2), Fraction(2,4),Fraction(4,2),Fraction(6,8)};
+
+ Fraction outputs[4] = {Fraction(1,2), Fraction(1,2),Fraction(2,1),Fraction(3,4)};
+
+
+ for(int i = 0; i < 4; i++){
+    Fraction actual = reduce_fraction(inputs[i]);
+    Fraction expected = outputs[i];
+
+    if(expected.denom == actual.denom && expected.num == actual.num ){
+        cout << "PASS" << endl;
+     } else {
+        cout << "FAIL case is" << actual.to_string() << endl;
+     }
+
+ }
+
+
+ //Fraction actual_output = reduce_fraction(input);
+ /*
+ if(expected_output.denom == actual_output.denom && expected_output.num == actual_output.num ){
+    cout << "PASS" << endl;
+ } else {
+    cout << "FAIL case is" << actual_output.to_string() << endl;
+ }
+*/
+
+}
 
 //CHATGPT PROMPTs USED: 
 //can you now create a test case for my boolean function that checks if a number is prime
@@ -133,7 +184,9 @@ int main(){
 
     
     //run_prime_Tests();
-    run_pow_2_Tests();
+    //run_pow_2_Tests();
+
+    
     
 
     return 0;
